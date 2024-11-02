@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Bearer Copier",
+  "description": "Copies bearer token from local or session storage to the clipboard using Ctrl+B (Windows/Linux) or Command+B (Mac).",
+  "version": "1.0",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "copy-bearer": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      },
+      "description": "Copy bearer token to clipboard"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png"
+    },
+    "default_title": "Bearer Copier"
+  }
+}
